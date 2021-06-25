@@ -1,0 +1,7 @@
+
+# Mac compile generate file
+/*.dSYM/
+
+# Windows compile generate file
+!*.dll
+/bin/*.exe
