@@ -7,6 +7,7 @@ Enviroment:
 - vscode
 - glew
 - glfw
+- SOIL
 - framework OpenGL
 
 ### Some Note
