@@ -3,5 +3,5 @@
 /*.dSYM/
 
 # Windows compile generate file
-!*.dll
-/bin/*.exe
+/bin/*
+!/bin/*.dll
