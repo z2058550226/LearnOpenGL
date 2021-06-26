@@ -12,12 +12,13 @@
                 "-stdlib=libc++",
                 "-lGLEW",
                 "-lglfw",
+                "-lSOIL",
                 "-framework",
                 "OpenGL",
                 "-g",
                 "${file}",
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension}"
+                "${fileDirname}/bin/${fileBasenameNoExtension}"
             ],
             "options": {
                 "cwd": "${workspaceFolder}"
