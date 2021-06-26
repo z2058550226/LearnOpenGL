@@ -3,7 +3,8 @@
 From: [LearnOpenGL-CN](https://learnopengl-cn.readthedocs.io/zh/latest/)
 
 Enviroment: 
-- Mac
+- Mac/Windows
+- clang++/MinGW64
 - vscode
 - glew
 - glfw
