@@ -22,7 +22,7 @@ cmake -DBUILD_SHARED_LIBS=ON .. -G "MinGW Makefiles"
 mingw32-make
 ```
 
-A simple open source C/C++ library manager on windows: MSYS2
+A simple open source C/C++ library manager on windows: [MSYS2](https://packages.msys2.org)
 - The include path: <path of MSYS2>/mingw64/include
 - The library path: <path of MSYS2>/mingw64/lib
 
