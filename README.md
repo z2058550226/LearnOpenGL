@@ -1,4 +1,4 @@
-# LearnOpenGLMac
+# LearnOpenGL
 
 From: [LearnOpenGL-CN](https://learnopengl-cn.readthedocs.io/zh/latest/)
 
