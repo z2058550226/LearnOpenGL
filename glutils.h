@@ -13,7 +13,7 @@ const GLuint WIDTH = 800, HEIGHT = 600;
 
 void key_callback(GLFWwindow *window, int key, int scancode, int action, int mode);
 
-GLFWwindow *initGL()
+GLFWwindow *initGL(GLFWkeyfun keyCallback)
 {
     std::cout << "Starting GLFW context, OpenGL 3.3" << std::endl;
     // Init GLFW
@@ -39,7 +39,14 @@ GLFWwindow *initGL()
     }
     glfwMakeContextCurrent(window);
     // Set the required callback functions
-    glfwSetKeyCallback(window, key_callback);
+    if (keyCallback == nullptr)
+    {
+        glfwSetKeyCallback(window, key_callback);
+    }
+    else
+    {
+        glfwSetKeyCallback(window, keyCallback);
+    }
 
     // Set this to true so GLEW knows to use a modern approach to retrieving function pointers and extensions
     glewExperimental = GL_TRUE;
@@ -56,6 +63,11 @@ GLFWwindow *initGL()
     glViewport(0, 0, width, height);
 
     return window;
+}
+
+GLFWwindow *initGL()
+{
+    return initGL(nullptr);
 }
 
 // Is called whenever a key is pressed/released via GLFW
