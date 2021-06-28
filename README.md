@@ -9,6 +9,7 @@ Enviroment:
 - glew
 - glfw
 - SOIL
+- GLM
 - framework OpenGL
 
 ### Some Note
