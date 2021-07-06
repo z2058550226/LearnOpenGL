@@ -58,6 +58,14 @@ int main()
 
     glBindVertexArray(0); // Unbind VAO
 
+    GLuint transformLoc = glGetUniformLocation(ourShader.Program, "transform");
+    // 第二个参数代表要向opengl发送多少个矩阵，第三个参数表示是否转置矩阵，也就是交换行和列。
+    // OpenGl开发者通常使用一种内部矩阵布局，叫做列主序（Column-major Ordering）布局。GLM
+    // 的默认布局就是列主序，所以并不需要置换矩阵，故而用GL_FALSE。第四个参数是真正的矩阵数据，
+    // 但是GLM并不是把它们的矩阵存储为OpenGL所希望接受的那种，因此我们要先用GLM的自带函数
+    // value_ptr来变换这些数据。
+    glUniformMatrix2x4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));
+
     // Load and create a texture
     GLuint texture1;
     GLuint texture2;
