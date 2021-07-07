@@ -105,10 +105,15 @@ int main()
         glUniform1i(glGetUniformLocation(ourShader.Program, "ourTexture2"), 1);
 
         glm::mat4 trans(1.0f);
-        trans = glm::scale(trans, glm::vec3(0.5f, -0.5f, 0.0f));
-        trans = glm::rotate(trans, (GLfloat)(glfwGetTime() * glm::radians(90.0f)), glm::vec3(0.0f, 0.0f, 1.0f));
+        trans = glm::rotate(trans, glm::radians(90.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+        trans = glm::scale(trans, glm::vec3(0.5f, 0.5f, 0.5f));
 
         GLuint transformLoc = glGetUniformLocation(ourShader.Program, "transform");
+        // 第二个参数代表要向opengl发送多少个矩阵，第三个参数表示是否转置矩阵，也就是交换行和列。
+        // OpenGl开发者通常使用一种内部矩阵布局，叫做列主序（Column-major Ordering）布局。GLM
+        // 的默认布局就是列主序，所以并不需要置换矩阵，故而用GL_FALSE。第四个参数是真正的矩阵数据，
+        // 但是GLM并不是把它们的矩阵存储为OpenGL所希望接受的那种，因此我们要先用GLM的自带函数
+        // value_ptr来变换这些数据。
         glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));
 
         // Draw container
