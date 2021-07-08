@@ -12,12 +12,6 @@ int main()
 {
     GLFWwindow *window = initGL();
 
-    // glm::vec4 vec(1.0f, 0.0f, 0.0f, 1.0f);
-    // glm::mat4 trans(1.0f);
-    // trans = glm::translate(trans, glm::vec3(1.0f, 1.0f, 0.0f));
-    // vec = trans * vec;
-    // std::cout << vec.x << vec.y << vec.z << std::endl;
-
     Shader ourShader("./res/glsl/ch1_5_transform.vs", "./res/glsl/ch1_5_transform.frag");
 
     GLfloat vertices[] = {
@@ -61,8 +55,8 @@ int main()
     // Texture 1
     // ====================
     glGenTextures(1, &texture1);
-    glBindTexture(GL_TEXTURE_2D, texture1);                       // All upcoming GL_TEXTURE_2D operations now have effect on our texture object
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT); // Set texture wrapping to GL_REPEAT
+    glBindTexture(GL_TEXTURE_2D, texture1);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
@@ -71,7 +65,7 @@ int main()
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
     glGenerateMipmap(GL_TEXTURE_2D);
     SOIL_free_image_data(image);
-    glBindTexture(GL_TEXTURE_2D, 0); // Unbind texture when done, so we won't accidentily mess up our texture.
+    glBindTexture(GL_TEXTURE_2D, 0);
     // ===================
     // Texture 2
     // ===================
@@ -105,8 +99,8 @@ int main()
         glUniform1i(glGetUniformLocation(ourShader.Program, "ourTexture2"), 1);
 
         glm::mat4 trans(1.0f);
-        trans = glm::translate(trans, glm::vec3(0.5f, -0.5f, 0.0f));
         trans = glm::rotate(trans, (GLfloat)(glfwGetTime() * glm::radians(90.0f)), glm::vec3(0.0f, 0.0f, 1.0f));
+        trans = glm::translate(trans, glm::vec3(0.5f, -0.5f, 0.0f));
 
         GLuint transformLoc = glGetUniformLocation(ourShader.Program, "transform");
         glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));
