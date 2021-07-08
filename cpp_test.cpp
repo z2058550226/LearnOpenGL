@@ -15,7 +15,7 @@ int main()
 {
     int b = 3;
     testReference(b);
-    testReferenceInCStyle(&b);
+    // testReferenceInCStyle(&b);
 
     cout << b << endl;
 
